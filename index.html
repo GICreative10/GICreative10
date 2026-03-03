@@ -14,11 +14,10 @@
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      background: #0f172a;
       overflow-x: hidden;
     }
 
-    /* HERO COM FUNDO UNIVERSO */
+    /* HERO COM FUNDO ESTRELAS ANIMADO */
     .hero {
       position: relative;
       height: 100vh;
@@ -26,17 +25,17 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: url('fundo-universo.jpg') no-repeat center center/cover;
       overflow: hidden;
     }
 
-    /* ESTRELAS ANIMADAS */
+    /* FUNDO ESTRELAS FIXO */
     .hero::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: url('estrelas.png') repeat;
-      animation: moverEstrelas 60s linear infinite;
+      background: url('fundo-estrelado.png') repeat;
+      background-size: cover;
+      animation: moverEstrelas 100s linear infinite;
       z-index: 1;
     }
 
@@ -45,24 +44,25 @@
       to { background-position: 10000px 10000px; }
     }
 
-    /* LOGO */
-    .logo {
-      width: 250px;
+    /* LOGO E TEXTO NA FRENTE */
+    .hero img, .hero h1, .hero p, .btn {
+      position: relative;
       z-index: 2;
+    }
+
+    .hero .logo {
+      width: 250px;
       margin-bottom: 20px;
     }
 
-    /* TEXTO DO HERO */
     .hero h1 {
       font-size: 48px;
       margin: 0;
-      z-index: 2;
     }
 
     .hero p {
       font-size: 20px;
       margin: 10px 0 0 0;
-      z-index: 2;
       max-width: 600px;
     }
 
@@ -76,7 +76,6 @@
       border-radius: 8px;
       font-weight: bold;
       transition: 0.3s;
-      z-index: 2;
     }
 
     .btn:hover {
@@ -84,7 +83,7 @@
       transform: scale(1.05);
     }
 
-    /* APRESENTAÇÃO */
+    /* SOBRE */
     .sobre {
       padding: 60px 20px;
       background: linear-gradient(135deg, #1e293b, #0f172a);
