@@ -6,37 +6,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
+    /* RESET & BASE */
+    body, html {
       margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: Arial, sans-serif;
-      background-color: #0f172a;
       color: white;
       text-align: center;
+      background: #0f172a;
+      overflow-x: hidden;
     }
 
-    header {
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+    /* HERO COM FUNDO UNIVERSO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('fundo-universo.jpg') no-repeat center center/cover;
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+    /* ESTRELAS ANIMADAS */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('estrelas.png') repeat;
+      animation: moverEstrelas 60s linear infinite;
+      z-index: 1;
     }
 
-    h2 {
-      font-size: 30px;
+    @keyframes moverEstrelas {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 10000px; }
+    }
+
+    /* LOGO */
+    .logo {
+      width: 250px;
+      z-index: 2;
       margin-bottom: 20px;
     }
 
-    p {
-      font-size: 18px;
-      opacity: 0.85;
+    /* TEXTO DO HERO */
+    .hero h1 {
+      font-size: 48px;
+      margin: 0;
+      z-index: 2;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin: 10px 0 0 0;
+      z-index: 2;
+      max-width: 600px;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 25px;
+      margin-top: 20px;
       padding: 15px 30px;
       background-color: #22c55e;
       color: white;
@@ -44,6 +76,7 @@
       border-radius: 8px;
       font-weight: bold;
       transition: 0.3s;
+      z-index: 2;
     }
 
     .btn:hover {
@@ -51,11 +84,30 @@
       transform: scale(1.05);
     }
 
+    /* APRESENTAÇÃO */
+    .sobre {
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+
+    .sobre h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .sobre p {
+      font-size: 18px;
+      opacity: 0.85;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* SEÇÕES */
     section {
       padding: 60px 20px;
     }
 
-    .servicos {
+    .servicos, .galeria {
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -63,37 +115,16 @@
       margin-top: 30px;
     }
 
-    .card {
+    .card, .portfolio-item {
       background-color: #1e293b;
       padding: 25px;
       border-radius: 12px;
       width: 250px;
       transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0px 15px 30px rgba(0,0,0,0.5);
-    }
-
-    .galeria {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .portfolio-item {
-      background-color: #1e293b;
-      padding: 15px;
-      border-radius: 12px;
-      width: 280px;
-      transition: 0.3s;
       text-align: center;
     }
 
-    .portfolio-item:hover {
+    .card:hover, .portfolio-item:hover {
       transform: translateY(-8px);
       box-shadow: 0px 15px 30px rgba(0,0,0,0.5);
     }
@@ -131,7 +162,6 @@
       h1 {
         font-size: 32px;
       }
-
       .card, .portfolio-item {
         width: 90%;
       }
@@ -141,52 +171,57 @@
 </head>
 <body>
 
-<header>
-  <h1>GI Creative</h1>
-  <p>Criação de Artes Profissionais para Impressão e Redes Sociais</p>
-  <a class="btn" href="https://wa.me/5513996068418" target="_blank">
-    Fale no WhatsApp
-  </a>
-</header>
-
-<section>
-  <h2>Serviços</h2>
-  <div class="servicos">
-    <div class="card">Artes para Impressão</div>
-    <div class="card">Criativos para Redes Sociais</div>
-    <div class="card">Banners e Fachadas</div>
+  <!-- HERO -->
+  <div class="hero">
+    <img src="0EADCB6B-35A1-4708-838C-4B9BCB686A0A.png" alt="Logo GI Creative" class="logo">
+    <h1>GI Creative</h1>
+    <p>Criação de artes com tecnologia e inteligência artificial para transformar ideias em projetos incríveis.</p>
+    <a class="btn" href="https://wa.me/5513996068418" target="_blank">Fale no WhatsApp</a>
   </div>
-</section>
 
-<section>
-  <h2>Portfólio</h2>
-  <div class="galeria">
-    <!-- Gestão Inteligente -->
-    <div class="portfolio-item">
-      <img src="https://i.postimg.cc/V6M0nxzk/474D2A74-24F8-466E-AC79-765A34020F72.png" alt="Infraestrutura de TI">
-      <h3>Gestão Inteligente</h3>
-      <p>Transformando processos em resultados, garantindo excelência em cada detalhe.</p></p>
+  <!-- SOBRE -->
+  <section class="sobre">
+    <h2>Sobre Mim</h2>
+    <p>Sou engenheiro de software e utilizo programação e tecnologias com IA para criar artes profissionais, inovadoras e com resultados de alto impacto para impressão e redes sociais.</p>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section>
+    <h2>Serviços</h2>
+    <div class="servicos">
+      <div class="card">Artes para Impressão</div>
+      <div class="card">Criativos para Redes Sociais</div>
+      <div class="card">Banners e Fachadas</div>
     </div>
+  </section>
 
-    <!---->
-    <div class="portfolio-item">
-      <img src="https://i.postimg.cc/MKgNyHVf/0EADCB6B-35A1-4708-838C-4B9BCB686A0A.png" alt="Barra Proteica">
-      <h3>Barra Proteica</h3>
-      <p>Energia na medida certa! 💪🍫 Sua barra proteica perfeita para o dia a dia.</p>
+  <!-- PORTFÓLIO -->
+  <section>
+    <h2>Portfólio</h2>
+    <div class="galeria">
+      <div class="portfolio-item">
+        <img src="https://i.postimg.cc/V6M0nxzk/474D2A74-24F8-466E-AC79-765A34020F72.png" alt="Infraestrutura de TI">
+        <h3>Gestão Inteligente</h3>
+        <p>Transformando processos em resultados, garantindo excelência em cada detalhe.</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="0EADCB6B-35A1-4708-838C-4B9BCB686A0A.png" alt="Barra Proteica">
+        <h3>Barra Proteica</h3>
+        <p>Energia na medida certa! 💪🍫 Sua barra proteica perfeita para o dia a dia.</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="arte3.jpg" alt="Arte 3">
+        <h3>Arte 3</h3>
+        <p>Descrição da terceira arte do portfólio.</p>
+      </div>
     </div>
+  </section>
 
-    <!-- Arte 3 -->
-    <div class="portfolio-item">
-      <img src="arte3.jpg" alt="Arte 3">
-      <h3>Arte 3</h3>
-      <p>Descrição da terceira arte do portfólio.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 GI Creative - Todos os direitos reservados.
-</footer>
+  <footer>
+    © 2026 GI Creative - Todos os direitos reservados.
+  </footer>
 
 </body>
 </html>
